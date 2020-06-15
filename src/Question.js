@@ -11,35 +11,11 @@ class Question extends Component {
         super(props);
         this.state = {select: ""};
         this.handleClick = this.handleClick.bind(this);
-        // this.checkIfChecked = this.checkIfChecked.bind(this);
     }
     handleClick(option){
         this.setState({select: option});
+        this.props.submit(this.state);
     }
-    // checkIfChecked(option){
-    //     if(option == this.state.select){
-    //             return <input 
-    //             type="radio"
-    //             name="select"
-    //             id={option}
-    //             value={option}
-    //             onChange={this.handleChange}
-    //             checked
-    //         />;
-    //     }
-    //     else{
-    //         return <input 
-    //             type="radio"
-    //             name="select"
-    //             id={option}
-    //             value={option}
-    //             onChange={this.handleChange}
-    //         />;
-    //     }
-    // }
-    // componentDidUpdate(){
-    //     this.render();
-    // }
     render(){
         let selected = {backgroundColor: '#999999', color: 'white'};
         let notSelected = {color: 'black'};
