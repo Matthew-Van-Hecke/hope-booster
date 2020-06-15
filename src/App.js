@@ -1,12 +1,12 @@
 import React from 'react';
-import Question from './Question';
+import Quiz from './Quiz';
 import './App.css';
 
 function App() {
   return (
     <div className="App">
       <h1>Hope Booster Prescription</h1>
-      <Question />
+      <Quiz />
     </div>
   );
 }

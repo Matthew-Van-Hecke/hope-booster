@@ -9,11 +9,18 @@ class Question extends Component {
     };
     constructor(props){
         super(props);
-        this.state = {select: ""};
+        this.state = {selected: []};
         this.handleClick = this.handleClick.bind(this);
     }
     handleClick(option){
-        this.setState({select: option});
+        let selected = [...this.state.selected];
+        if (selected.includes(option)){
+            selected.splice(selected.indexOf(option), 1);
+        }
+        else{
+            selected.push(option);
+        }
+        this.setState({selected});
         this.props.submit(this.state);
     }
     render(){
@@ -22,7 +29,11 @@ class Question extends Component {
         return(
             <ul className="Question">
                 {this.props.options.map(option => 
-                <li key={this.props.options.indexOf(option)} onClick={() => this.handleClick(option)} style={this.state.select === option ? selected : notSelected}>
+                <li 
+                    key={this.props.options.indexOf(option)} 
+                    onClick={() => this.handleClick(option)} 
+                    style={this.state.selected.includes(option) ? selected : notSelected}
+                >
                     {option}
                 </li>
                 )}
