@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import './Quiz.css';
 import Question from './Question';
+import QuestionsDb from './QuestionsDb';
+import './Quiz.css';
 
 class Quiz extends Component{
     constructor(props){
@@ -12,7 +13,16 @@ class Quiz extends Component{
     }
     render(){
         return(
-            <Question submit={this.getResponse} />
+            QuestionsDb.map(
+                q => 
+                <Question
+                    key={q.question}
+                    question={q.question}
+                    options={q.options}
+                    selectOne={q.selectOne}
+                    submit={this.getResponse}
+                />
+            )
         )
     }
 }

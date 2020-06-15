@@ -146,3 +146,5 @@ const QuestionsDb = [
         ]
     }
 ]
+
+export default QuestionsDb;

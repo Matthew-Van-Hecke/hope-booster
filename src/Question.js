@@ -3,7 +3,6 @@ import './Question.css';
 
 class Question extends Component {
     static defaultProps = {
-        type: "text", 
         question: "My default to unwind is...", 
         options: ["A Show", "A Movie", "A Book", "Going Out", "Chill With Friends", "Outdoor Adventures", "Hobby"],
         selectOne: true
@@ -34,7 +33,9 @@ class Question extends Component {
         let selected = {backgroundColor: '#999999', color: 'white'};
         let notSelected = {color: 'black'};
         return(
-            <ul className="Question">
+            <div>
+                <h3>{this.props.question}</h3>
+                <ul className="Question">
                 {this.props.options.map(option => 
                 <li 
                     key={this.props.options.indexOf(option)} 
@@ -45,6 +46,7 @@ class Question extends Component {
                 </li>
                 )}
             </ul>
+            </div>
         )
     }
 }
