@@ -11,6 +11,10 @@ class Question extends Component {
         super(props);
         this.state = {selected: []};
         this.handleClick = this.handleClick.bind(this);
+        this.submit = this.submit.bind(this);
+    }
+    submit(){
+        this.props.submit(this.state);
     }
     handleClick(option){
         let selected = [...this.state.selected];
@@ -26,8 +30,7 @@ class Question extends Component {
                 selected.push(option);
             }
         }
-        this.setState({selected});
-        this.props.submit(this.state);
+        this.setState({selected}, this.submit);
     }
     render(){
         let selected = {backgroundColor: '#999999', color: 'white'};
