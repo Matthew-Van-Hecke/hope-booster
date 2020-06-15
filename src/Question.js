@@ -5,7 +5,8 @@ class Question extends Component {
     static defaultProps = {
         type: "text", 
         question: "My default to unwind is...", 
-        options: ["A Show", "A Movie", "A Book", "Going Out", "Chill With Friends", "Outdoor Adventures", "Hobby"]
+        options: ["A Show", "A Movie", "A Book", "Going Out", "Chill With Friends", "Outdoor Adventures", "Hobby"],
+        selectOne: true
     };
     constructor(props){
         super(props);
@@ -14,11 +15,17 @@ class Question extends Component {
     }
     handleClick(option){
         let selected = [...this.state.selected];
-        if (selected.includes(option)){
-            selected.splice(selected.indexOf(option), 1);
+        if (this.props.selectOne){
+            selected.pop();
+            selected.push(option);
         }
         else{
-            selected.push(option);
+            if (selected.includes(option)){
+                selected.splice(selected.indexOf(option), 1);
+            }
+            else{
+                selected.push(option);
+            }
         }
         this.setState({selected});
         this.props.submit(this.state);
