@@ -9,7 +9,7 @@ class Question extends Component {
     };
     constructor(props){
         super(props);
-        this.state = {selected: []};
+        this.state = {selected: [], question: this.props.question};
         this.handleClick = this.handleClick.bind(this);
         this.submit = this.submit.bind(this);
     }
