@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Question from './Question';
 import QuestionsDb from './QuestionsDb';
+import {Movies} from './ArtDb';
 import './Quiz.css';
 
 class Quiz extends Component{
@@ -23,7 +24,19 @@ class Quiz extends Component{
                 responses.push(responseArrays[i][j]);
             }
         }
-        console.log(responses);
+        let results = Movies.map(m => 
+            m.title + " - " + this.countCommonElements(m.properties, responses).toString()
+            );
+        console.log(results);
+    }
+    countCommonElements(arrOne, arrTwo){
+        let count = 0;
+        for (let i = 0; i < arrOne.length; i++){
+            if (arrTwo.includes(arrOne[i])){
+                count++;
+            }
+        }
+        return count;
     }
     render(){
         return(
