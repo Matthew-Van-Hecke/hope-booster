@@ -2,3 +2,7 @@
     text-align: left;
     list-style: none;
 }
+
+.Question li:hover{
+    cursor: pointer;
+}
